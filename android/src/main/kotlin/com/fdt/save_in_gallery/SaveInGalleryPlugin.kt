@@ -118,7 +118,11 @@ class SaveInGalleryPlugin(
             }
             request.result.success(true)
             
-            context!!.sendBroadcast(Intent(Intent.ACTION_MEDIA_SCANNER_SCAN_FILE, File(directory, formattedName)))
+            Intent intent = new Intent(Intent.ACTION_MEDIA_SCANNER_SCAN_FILE);
+            Uri uri = Uri.fromFile(new File(directory, formattedName));
+            intent.setData(uri);
+            activity.sendBroadcast(intent);
+            
         } catch (e: IOException) {
             request.result.error("ERROR", "Error while saving image into file: ${e.message}", null)
         }
