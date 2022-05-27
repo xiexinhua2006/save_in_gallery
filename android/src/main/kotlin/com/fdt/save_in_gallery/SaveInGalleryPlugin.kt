@@ -1,6 +1,7 @@
 package com.fdt.save_in_gallery
 
 import android.app.Activity
+import android.content.Intent
 import android.content.pm.PackageManager
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
@@ -111,7 +112,7 @@ class SaveInGalleryPlugin(
 
         try {
             FileOutputStream(File(directory, formattedName)).use { out ->
-                bitmap.compress(Bitmap.CompressFormat.png, 100, out)
+                bitmap.compress(Bitmap.CompressFormat.PNG, 100, out)
             }
             request.result.success(true)
             
