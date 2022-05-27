@@ -111,9 +111,11 @@ class SaveInGalleryPlugin(
 
         try {
             FileOutputStream(File(directory, formattedName)).use { out ->
-                bitmap.compress(Bitmap.CompressFormat.PNG, 100, out)
+                bitmap.compress(Bitmap.CompressFormat.png, 100, out)
             }
             request.result.success(true)
+            
+            context!!.sendBroadcast(Intent(Intent.ACTION_MEDIA_SCANNER_SCAN_FILE, File(directory, formattedName)))
         } catch (e: IOException) {
             request.result.error("ERROR", "Error while saving image into file: ${e.message}", null)
         }
