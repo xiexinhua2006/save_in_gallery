@@ -1,5 +1,7 @@
 package com.fdt.save_in_gallery
 
+import android.content.ContentValues
+import android.content.Context
 import android.app.Activity
 import android.content.Intent
 import android.content.pm.PackageManager
